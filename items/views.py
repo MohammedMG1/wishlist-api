@@ -63,7 +63,7 @@ def user_logout(request):
 def item_favorite(request, item_id):
     item_object = Item.objects.get(id=item_id)
     if request.user.is_anonymous:
-        return redirent('user-login')
+        return redirect('user-login')
     
     favorite, created = FavoriteItem.objects.get_or_create(user=request.user, item=item_object)
     if created:
